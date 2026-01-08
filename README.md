@@ -2,7 +2,7 @@
 
 A beautiful animated analog clock with customizable themes, responsive design, and persistent settings.
 
-![Analog Clock](https://analogclockj.github.io/screenshot.png)
+![Analog Clock](screenshot.png)
 
 ## Demo
 
