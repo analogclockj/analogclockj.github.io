@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- MIT License
-Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
+Copyright (c) 2025-2026 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
 -->
 <html lang="en">
 <head>
@@ -157,6 +157,10 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
             --glow-color: rgba(212, 175, 55, 0.5);
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg-primary);
@@ -165,7 +169,7 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 16px;
             transition: background 0.5s ease;
             overflow-x: hidden;
         }
@@ -174,7 +178,7 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 18px;
             width: 100%;
             max-width: 600px;
         }
@@ -188,8 +192,9 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
 
         .clock {
             position: relative;
-            width: min(350px, 80vw);
-            height: min(350px, 80vw);
+            /* Size scales with both viewport width AND height so it fits at 100% zoom */
+            width: min(320px, 80vw, 55vh);
+            height: min(320px, 80vw, 55vh);
             border-radius: 50%;
             background: var(--clock-face);
             border: 4px solid var(--clock-border);
@@ -300,7 +305,7 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
 
         .number {
             position: absolute;
-            font-size: clamp(14px, 4vw, 20px);
+            font-size: clamp(13px, 2.2vh, 20px);
             font-weight: 600;
             color: var(--number-color);
             text-shadow: 0 0 10px var(--glow-color);
@@ -308,51 +313,62 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
+        }
+
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
         }
 
         .digital-time {
-            font-size: clamp(24px, 6vw, 36px);
+            font-size: clamp(20px, 3.5vh, 32px);
             font-weight: 300;
             color: var(--text-primary);
             letter-spacing: 4px;
             text-shadow: 0 0 20px var(--glow-color);
             transition: all 0.5s ease;
             font-variant-numeric: tabular-nums;
+            line-height: 1.1;
         }
 
         .date-display {
-            font-size: clamp(14px, 3vw, 18px);
+            font-size: clamp(12px, 1.8vh, 16px);
             color: var(--text-secondary);
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.5s ease;
+            line-height: 1.1;
         }
 
         .controls {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             justify-content: center;
-            padding: 20px;
+            padding: 14px 18px;
             background: var(--bg-secondary);
-            border-radius: 20px;
+            border-radius: 18px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.5s ease;
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
         }
 
         .theme-btn {
-            width: 45px;
-            height: 45px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             border: 3px solid transparent;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .theme-btn:hover {
@@ -394,17 +410,18 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
         }
 
         .toggle-btn {
-            padding: 12px 24px;
+            padding: 8px 16px;
             background: var(--button-bg);
             border: 2px solid var(--clock-border);
             color: var(--text-primary);
-            border-radius: 30px;
+            border-radius: 24px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .toggle-btn:hover {
@@ -420,12 +437,12 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
 
         .settings-row {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
             justify-content: center;
             width: 100%;
-            margin-top: 10px;
-            padding-top: 15px;
+            margin-top: 8px;
+            padding-top: 12px;
             border-top: 1px solid var(--button-bg);
         }
 
@@ -474,27 +491,27 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
         /* Responsive Design */
         @media (max-width: 480px) {
             .container {
-                gap: 20px;
+                gap: 16px;
             }
 
             .clock {
-                width: min(280px, 75vw);
-                height: min(280px, 75vw);
+                width: min(280px, 75vw, 50vh);
+                height: min(280px, 75vw, 50vh);
             }
 
             .controls {
-                padding: 15px;
-                gap: 8px;
+                padding: 12px;
+                gap: 6px;
             }
 
             .theme-btn {
-                width: 38px;
-                height: 38px;
+                width: 34px;
+                height: 34px;
             }
 
             .toggle-btn {
-                padding: 10px 16px;
-                font-size: 12px;
+                padding: 8px 14px;
+                font-size: 11px;
             }
 
             .tick.major {
@@ -508,8 +525,8 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
 
         @media (max-width: 360px) {
             .clock {
-                width: min(240px, 70vw);
-                height: min(240px, 70vw);
+                width: min(240px, 70vw, 45vh);
+                height: min(240px, 70vw, 45vh);
             }
 
             .number {
@@ -517,8 +534,8 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
             }
         }
 
-        /* Landscape orientation */
-        @media (orientation: landscape) and (max-height: 500px) {
+        /* Landscape orientation - put clock side by side with info */
+        @media (orientation: landscape) and (max-height: 600px) {
             body {
                 padding: 10px;
             }
@@ -526,40 +543,103 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
             .container {
                 flex-direction: row;
                 max-width: 100%;
-                gap: 20px;
+                gap: 24px;
                 justify-content: center;
+                align-items: center;
             }
 
             .clock {
-                width: min(250px, 40vh);
-                height: min(250px, 40vh);
+                width: min(320px, 80vh);
+                height: min(320px, 80vh);
             }
 
             .info-section {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
+                width: auto;
+                gap: 12px;
             }
 
             .controls {
-                max-width: 300px;
+                max-width: 320px;
             }
         }
 
-        /* Large screens */
-        @media (min-width: 1200px) {
+        /* Desktop - side by side layout with bigger clock */
+        @media (orientation: landscape) and (min-width: 800px) and (max-height: 900px) {
+            .container {
+                flex-direction: row;
+                max-width: 100%;
+                gap: 48px;
+                justify-content: center;
+                align-items: center;
+            }
+
             .clock {
-                width: 400px;
-                height: 400px;
+                width: min(480px, 85vh);
+                height: min(480px, 85vh);
+            }
+
+            .info-section {
+                width: auto;
+                gap: 16px;
+            }
+
+            .controls {
+                max-width: 380px;
+            }
+
+            .digital-time {
+                font-size: clamp(24px, 4vh, 38px);
+            }
+
+            .date-display {
+                font-size: clamp(13px, 2vh, 18px);
             }
 
             .number {
-                font-size: 24px;
+                font-size: clamp(15px, 2.5vh, 22px);
+                width: 42px;
+                height: 42px;
+            }
+        }
+
+        /* Large desktop screens */
+        @media (min-width: 1200px) and (min-height: 700px) {
+            .container {
+                max-width: 100%;
+                gap: 60px;
+            }
+
+            .clock {
+                width: min(560px, 80vh);
+                height: min(560px, 80vh);
+            }
+
+            .digital-time {
+                font-size: clamp(28px, 4.5vh, 44px);
+            }
+
+            .number {
+                font-size: clamp(16px, 2.8vh, 24px);
+                width: 46px;
+                height: 46px;
+            }
+        }
+
+        /* Extra large desktop screens */
+        @media (min-width: 1600px) and (min-height: 900px) {
+            .clock {
+                width: min(640px, 75vh);
+                height: min(640px, 75vh);
             }
 
             .digital-time {
                 font-size: 48px;
+            }
+
+            .number {
+                font-size: 26px;
+                width: 50px;
+                height: 50px;
             }
         }
 
@@ -684,6 +764,12 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
         const digitalTime = document.getElementById('digitalTime');
         const dateDisplay = document.getElementById('dateDisplay');
 
+        // Cumulative angles to prevent backward rotation at wrap-around
+        // (e.g. 354deg -> 360deg instead of 354deg -> 0deg, which would rewind)
+        let lastSecondAngle = 0;
+        let lastMinuteAngle = 0;
+        let lastHourAngle = 0;
+
         // Create clock face elements
         function createClockFace() {
             // Remove existing ticks and numbers
@@ -731,6 +817,19 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
             });
         }
 
+        // Helper: ensure new angle is always >= last angle (monotonically increasing)
+        // This prevents the CSS transition from rewinding when angles wrap (e.g. 354 -> 0)
+        function nextAngle(lastAngle, newAngleMod360) {
+            // Normalize lastAngle's modulo position
+            const lastMod = ((lastAngle % 360) + 360) % 360;
+            let delta = newAngleMod360 - lastMod;
+            // If new angle is "behind" by more than a tiny bit, assume it wrapped forward
+            if (delta < 0) {
+                delta += 360;
+            }
+            return lastAngle + delta;
+        }
+
         // Update clock hands
         function updateClock() {
             const now = new Date();
@@ -739,17 +838,22 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
             const seconds = now.getSeconds();
             const milliseconds = now.getMilliseconds();
 
-            // Calculate angles
-            const secondAngle = state.smoothSeconds 
+            // Calculate raw angles (0-360)
+            const rawSecondAngle = state.smoothSeconds 
                 ? (seconds + milliseconds / 1000) * 6 
                 : seconds * 6;
-            const minuteAngle = (minutes + seconds / 60) * 6;
-            const hourAngle = (hours % 12 + minutes / 60) * 30;
+            const rawMinuteAngle = (minutes + seconds / 60) * 6;
+            const rawHourAngle = (hours % 12 + minutes / 60) * 30;
+
+            // Convert to monotonically increasing angles to avoid backward rotation
+            lastSecondAngle = nextAngle(lastSecondAngle, rawSecondAngle);
+            lastMinuteAngle = nextAngle(lastMinuteAngle, rawMinuteAngle);
+            lastHourAngle = nextAngle(lastHourAngle, rawHourAngle);
 
             // Apply rotations
-            secondHand.style.transform = `rotate(${secondAngle}deg)`;
-            minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
-            hourHand.style.transform = `rotate(${hourAngle}deg)`;
+            secondHand.style.transform = `rotate(${lastSecondAngle}deg)`;
+            minuteHand.style.transform = `rotate(${lastMinuteAngle}deg)`;
+            hourHand.style.transform = `rotate(${lastHourAngle}deg)`;
 
             // Update digital time
             const displayHours = state.use24Hour ? hours : hours % 12 || 12;
@@ -823,6 +927,19 @@ Copyright (c) 2025 Yuliya Kolesnikova <0009-0000-6151-7415@orcid.org>
             loadState();
             createClockFace();
             applySettings();
+
+            // Initialize cumulative angles to current time so first render
+            // doesn't animate from 0 across the whole face
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+            const ms = now.getMilliseconds();
+            lastSecondAngle = state.smoothSeconds
+                ? (seconds + ms / 1000) * 6
+                : seconds * 6;
+            lastMinuteAngle = (minutes + seconds / 60) * 6;
+            lastHourAngle = (hours % 12 + minutes / 60) * 30;
             
             // Theme buttons
             document.querySelectorAll('.theme-btn').forEach(btn => {
